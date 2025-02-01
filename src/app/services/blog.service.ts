@@ -10,11 +10,19 @@ export class BlogService {
   private posts: IPost[] = POSTS;
   private categories: ICategory[] = CATEGORIES;
 
+  private nextPostId = 20;
+
   getAll(): IPost[] {
     return this.posts;
   }
 
   getCategories(): ICategory[] {
     return this.categories;
+  }
+
+  insert(post: IPost) {
+    post.id = this.nextPostId;
+    this.posts.push(post);
+    this.nextPostId++;
   }
 }
