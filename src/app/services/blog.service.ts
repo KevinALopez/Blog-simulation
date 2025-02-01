@@ -20,6 +20,14 @@ export class BlogService {
     return this.categories;
   }
 
+  getById(id: number): IPost | undefined {
+    return this.posts.find((post) => post.id === id);
+  }
+
+  getByCategory(category: string): IPost[] {
+    return this.posts.filter((post) => post.category.name === category);
+  }
+
   insert(post: IPost) {
     post.id = this.nextPostId;
     this.posts.push(post);
