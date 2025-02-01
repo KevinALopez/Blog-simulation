@@ -1,6 +1,7 @@
 <section class="container m-auto p-3">
   <h1 class="text-center mb-4 col-12">Angular Blogs</h1>
-  <app-category-filter (selectCategory)="filterPosts($event)" />
+  <app-title-filter (inputTitle)="filterPostsByTitle($event)" />
+  <app-category-filter (selectCategory)="filterPostsByCategory($event)" />
   <div class="row row-gap-4">
     @for (post of postsList; track post.id) {
     <article class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-3">
