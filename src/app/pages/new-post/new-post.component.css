@@ -1,0 +1,12 @@
+.max-w-form {
+  max-width: 500px;
+}
+
+.max-w-submit {
+  max-width: 200px;
+}
+
+.error {
+  font-size: 12px;
+  color: tomato;
+}

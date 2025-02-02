@@ -1,0 +1,95 @@
+<section class="container m-auto">
+  <h1 class="text-center mt-3">Nuevo Post</h1>
+  <form
+    [formGroup]="formModel"
+    class="mt-3 container m-auto max-w-form border border-black rounded p-3"
+    (ngSubmit)="onSubmit()"
+  >
+    <p class="text-center">Rellena el formulario para crear un nuevo post:</p>
+    <div>
+      <label for="title" class="form-label">Titulo:</label>
+      <input
+        class="form-control py-1 px-2"
+        type="text"
+        formControlName="title"
+        id="title"
+        placeholder="Escribe el titulo del post"
+      />
+      @if(checkErrorField('title', 'required')){
+      <p class="error">El campo es obligatorio</p>
+      } @if(checkErrorField('title', 'minlength')){
+      <p class="error">El campo tiene una longitud minima de 3 caracteres</p>
+      }
+    </div>
+    <div class="mt-3">
+      <label for="body" class="form-label">Contenido:</label>
+      <input
+        class="form-control py-1 px-2"
+        type="text"
+        formControlName="body"
+        id="body"
+        placeholder="Escribe el contenido del post"
+      />
+      @if(checkErrorField('body', 'required')){
+      <p class="error">El campo es obligatorio</p>
+      } @if(checkErrorField('body', 'minlength')){
+      <p class="error">El campo tiene una longitud minima de 3 caracteres</p>
+      }
+    </div>
+    <div class="mt-3">
+      <label for="author" class="form-label">Autor:</label>
+      <input
+        class="form-control py-1 px-2"
+        type="text"
+        formControlName="author"
+        id="author"
+        placeholder="Escribe el nombre del autor"
+      />
+      @if(checkErrorField('author', 'required')){
+      <p class="error">El campo es obligatorio</p>
+      } @if(checkErrorField('author', 'minlength')){
+      <p class="error">El campo tiene una longitud minima de 3 caracteres</p>
+      }
+    </div>
+    <div class="mt-3">
+      <label for="img" class="form-label">Url de Imagen:</label>
+      <input
+        class="form-control py-1 px-2"
+        type="text"
+        formControlName="img"
+        id="img"
+        placeholder="Escribe la url de la imagen a utilizar"
+      />
+      @if(checkErrorField('img', 'required')){
+      <p class="error">El campo es obligatorio</p>
+      } @if(checkErrorField('img', 'pattern')){
+      <p class="error">
+        El campo debe ser una url de este
+        tipo:"https://picsum.photos/id/NUMERO/200/300"
+      </p>
+      }
+    </div>
+    <div class="mt-3">
+      <label class="form-label" for="category">Categoria:</label>
+      <select class="form-select" formControlName="category" id="category">
+        <option value="">Selecciona una categoria</option>
+        @for (category of categories; track category.id) {
+        <option value="{{ category.name }}">
+          {{ category.name[0].toUpperCase() + category.name.slice(1) }}
+        </option>
+        }
+      </select>
+      @if(checkErrorField('category', 'required')){
+      <p class="error">El campo es obligatorio</p>
+      }
+    </div>
+    <div>
+      <input
+        type="submit"
+        value="Crear Post"
+        class="btn btn-dark mt-4 d-block mx-auto w-100 max-w-submit"
+        [disabled]="formModel.invalid"
+      />
+    </div>
+  </form>
+</section>

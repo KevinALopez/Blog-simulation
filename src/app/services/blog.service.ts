@@ -10,7 +10,7 @@ export class BlogService {
   private posts: IPost[] = POSTS;
   private categories: ICategory[] = CATEGORIES;
 
-  private nextPostId = 20;
+  private nextPostId = 21;
 
   getAll(): IPost[] {
     return this.posts;
@@ -28,9 +28,16 @@ export class BlogService {
     return this.posts.filter((post) => post.category.name === category);
   }
 
-  insert(post: IPost) {
+  insert(post: IPost): number {
     post.id = this.nextPostId;
     this.posts.push(post);
     this.nextPostId++;
+    return post.id;
+  }
+
+  getCategoryByName(name: string): ICategory | undefined {
+    return this.categories.find(
+      (category) => category.name.toLowerCase() === name.toLowerCase()
+    );
   }
 }
