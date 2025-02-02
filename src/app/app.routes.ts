@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { BlogComponent } from './pages/blog/blog.component';
+import { ViewPostComponent } from './pages/view-post/view-post.component';
 
 export const routes: Routes = [
   {
@@ -10,5 +11,9 @@ export const routes: Routes = [
   {
     path: 'blog',
     component: BlogComponent,
+  },
+  {
+    path: 'post/:id',
+    component: ViewPostComponent,
   },
 ];

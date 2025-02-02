@@ -1,0 +1,44 @@
+<section class="w-100 mt-4 p-4">
+  <article
+    class="container m-auto border rounded px-1 py-3 max-w shadow-lg bg-dark text-white text-center row"
+  >
+    <div class="col-12">
+      <h1>{{ post?.title }}</h1>
+      <p class="text-white">
+        Escrito por {{ post?.author }} el {{ post?.date }}
+      </p>
+      <p>{{ post?.body }}</p>
+      <div>
+        <p>
+          Categor&iacute;a:
+          <span>
+            {{ post?.category?.name }}
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="w-100 py-2 col-12">
+      <img
+        class="object-fit-contain border w-100 rounded"
+        src="{{ post?.img }}"
+        alt="{{ post?.title }}"
+      />
+    </div>
+  </article>
+
+  <div class="d-flex justify-content-center">
+    <button class="btn btn-dark mt-3 w-100 max-w" [routerLink]="['/blog']">
+      Volver
+    </button>
+  </div>
+</section>
+
+<!-- {
+    id: 19,
+    title: 'Cabañas en los Pirineos',
+    body: 'Pasé un fin de semana desconectado del mundo en una cabaña de madera.',
+    author: 'Beatriz Navas',
+    img: 'https://picsum.photos/id/415/200/300',
+    date: '2022-07-07',
+    category: { id: 4, name: 'rural' },
+  } -->
